@@ -1,0 +1,13 @@
+// i principi della sintesi sottrativa sono : la frequenza di taglio che si indica con (cutoff); però abbiamo vari tipi di frequenza di taglio che sono: il passa basso ,passa alto e passa banda ; 
+// il punto di taglio espresso in herz indica il punto in cui l'ampiezza del segnale in entrata viene atenuato di 3DB (decibel)
+// cutoff indica il punto in cui il filtro inizia a tagliare le frequenze 
+// il filtro del primo ordine toglie 6DB ogni ottava 
+// filtrare significa togliere 
+// lo spectroscopio analizza l'ampiezza sul dominio della frequenza 
+// no.noise si mette prima del soggetto e blocca il segnale in entrata 
+// il filtro lowpass oppure passa basso è un filtro che attenua porzioni di spetro sopra un frequenza data 
+// il filtro highpass oppure passa alto è un filtro che attenua porzioni di spetro sotto una frequenza data 
+// il filtro band pass filter oppure passa banda é un filtro che sta nel mezzo tra highpass e lowpass.
+import("stdfaust.lib");
+cutoff = vslider ("cut_of [style:knob]",1000,20,20000,1);
+process = fi.lowpass (2,cutoff) : fi.highpass (2,cutoff);
